@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Segmentasi Paru-Paru</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .image-frame {
+            max-width: 100%; /* Untuk memastikan gambar tidak melebihi lebar frame */
+            max-height: 400px; /* Atur tinggi maksimum frame, ubah sesuai kebutuhan */
+            border: 1px solid #ccc; /* Contoh frame border */
+        }
+    </style>
+</head>
+<body class="container mt-5">
+    <h1 class="text-center">Hasil Prediksi Paru-Paru</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <p class="card-text">The image is classified as: {{ result }}</p>
+                    {% if image_dimensions %}
+                        <img src="{{ url_for('static', filename='uploads/' + image_path) }}" alt="Uploaded Image" class="img-fluid mb-3 image-frame" width="{{ image_dimensions.width }}" height="{{ image_dimensions.height }}">
+                    {% else %}
+                        <img src="{{ url_for('static', filename='uploads/' + image_path) }}" alt="Uploaded Image" class="img-fluid mb-3 image-frame">
+                    {% endif %}
+                    <a href="/" class="btn btn-primary">Back to Upload</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
